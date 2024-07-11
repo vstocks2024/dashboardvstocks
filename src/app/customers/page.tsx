@@ -4,6 +4,8 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import { Customers, columns } from "../../components/customers_components/columns"
 import { DataTable } from "../../components/customers_components/data-table"
 import axios from "axios";
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 
 
