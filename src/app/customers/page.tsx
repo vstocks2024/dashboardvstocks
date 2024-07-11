@@ -8,7 +8,7 @@ import { DataTable } from "../../components/customers_components/data-table";
 
 
 async function getData(): Promise<Customers[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/customers/listall`);
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
   return res.json();
 }
 
