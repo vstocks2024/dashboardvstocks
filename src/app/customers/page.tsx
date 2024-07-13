@@ -9,6 +9,7 @@ import { toast } from "@/components/ui/use-toast";
 
 
 async function getData(): Promise<Customers[]> {
+  try{
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/customers/listall`,{
       method:"GET",
       cache:"no-store"    
@@ -20,6 +21,11 @@ async function getData(): Promise<Customers[]> {
     })
   }
   return res.json();
+}
+  catch(error){
+    console.log(error);
+  }
+  return [];
 }
 
 export default async function CustomersPage() {

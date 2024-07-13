@@ -90,9 +90,7 @@ const [loading, setLoading] = useState(false);
                       <Input  placeholder="Enter Tag Name" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name. It can be your real name
-                      or a pseudonym. You can only change this once every 30
-                      days.
+                      Enter a unique tag name
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -112,8 +110,7 @@ const [loading, setLoading] = useState(false);
                       />
                     </FormControl>
                     <FormDescription>
-                      You can <span>@mention</span> other users and
-                      organizations to link to them.
+                        Enter a description for the tag
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
