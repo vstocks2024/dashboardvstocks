@@ -3,12 +3,22 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import {
   Customers,
   columns,
-} from "../../components/customers_components/columns";
-import { DataTable } from "../../components/customers_components/data-table";
+} from "./_components/columns";
+import { DataTable } from "./_components/data-table";
+import { toast } from "@/components/ui/use-toast";
 
 
 async function getData(): Promise<Customers[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/customers/listall`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/customers/listall`,{
+      method:"GET",
+      cache:"no-store"    
+  });
+  if(!res.ok) {
+    toast({
+      title:"Failed to fetch customer details",
+       description:res.statusText
+    })
+  }
   return res.json();
 }
 

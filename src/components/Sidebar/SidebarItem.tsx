@@ -1,9 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import SidebarDropdown from "@/components/Sidebar/SidebarDropdown";
+import { useRouter } from "next/navigation";
 
 const SidebarItem = ({ item, pageName, setPageName }: any) => {
+  //const router = useRouter();
   const handleClick = () => {
+    //router.refresh();
     const updatedPageName =
       pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
     return setPageName(updatedPageName);

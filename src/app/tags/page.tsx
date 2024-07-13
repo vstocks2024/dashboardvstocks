@@ -9,9 +9,14 @@ import NewTagButton from "./_components/NewTagButton";
 async function getData(): Promise<Tag[]> {
   // Fetch data from your API here.
 
-  const resp=await axios.get(`${process.env.NEXT_PUBLIC_URL}/tags/list_tags`);
-  if(resp.status===200 && resp.statusText==="OK") return resp.data;
-  return [];
+  const resp=await fetch(`${process.env.NEXT_PUBLIC_URL}/tags/list_tags`,{
+    method:"GET",
+    cache:"no-store",
+  });
+  if(!resp.ok){
+    throw new Error("Tags where not fetched");
+  };
+  return resp.json();
 
   
 }

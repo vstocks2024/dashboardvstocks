@@ -1,4 +1,4 @@
-import { fetchFilteredImages } from '@/app/lib/data';
+import { fetchFilteredImages } from '@/lib/data';
 import React from 'react'
 import { DeleteImageButton } from '../DeleteImageButton';
 

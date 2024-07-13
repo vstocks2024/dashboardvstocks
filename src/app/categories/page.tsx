@@ -6,9 +6,14 @@ import axios from "axios";
 import NewCategoryButton from "./_components/NewCategoryButton";
 async function getData(): Promise<Category[]> {
   // Fetch data from your API here.
-  const resp= await axios.get(`${process.env.NEXT_PUBLIC_URL}/categories/list_categories`);
-  if(resp.status===200 && resp.statusText==="OK") return resp.data;
-  return [];
+  const resp= await fetch(`${process.env.NEXT_PUBLIC_URL}/categories/list_categories`,{
+    cache:'no-store',
+  });
+  if (!resp.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+  return resp.json();
   
 }
 

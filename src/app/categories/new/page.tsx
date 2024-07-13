@@ -56,7 +56,7 @@ export default function NewCategoryPage() {
         setLoading(false);
         form.reset();
         console.log(resp);
-        //router.refresh();
+        router.refresh();
         toast({
           title:"Success",
          description:`Category Successfully Created`
@@ -65,6 +65,7 @@ export default function NewCategoryPage() {
       else{
         console.log(resp);
         setLoading(false);
+        router.refresh();
         toast({
           title:"Failure",
           description:"Category doesn't get created please provide a unique category name and valid description",
@@ -73,7 +74,7 @@ export default function NewCategoryPage() {
       }
     
   }
-  function onReset() {}
+  
   return (
     <>
       <DefaultLayout>
@@ -91,9 +92,7 @@ export default function NewCategoryPage() {
                       <Input placeholder="Category Name" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name. It can be your real name
-                      or a pseudonym. You can only change this once every 30
-                      days.
+                   Write a unique name for category
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -113,8 +112,7 @@ export default function NewCategoryPage() {
                       />
                     </FormControl>
                     <FormDescription>
-                      You can <span>@mention</span> other users and
-                      organizations to link to them.
+                     Write a brief description about the category
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
