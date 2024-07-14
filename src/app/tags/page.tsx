@@ -4,20 +4,28 @@ import { Tag, columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 import axios from "axios";
 import NewTagButton from "./_components/NewTagButton";
+import { toast } from "@/components/ui/use-toast";
 
 
 async function getData(): Promise<Tag[]> {
   // Fetch data from your API here.
-
+ try{
   const resp=await fetch(`${process.env.NEXT_PUBLIC_URL}/tags/list_tags`,{
     method:"GET",
     cache:"no-store",
   });
   if(!resp.ok){
-    throw new Error("Tags where not fetched");
-  };
+    toast({
+       title: resp.status+" "+ "Failed to fetch the tags",
+       description:resp.statusText
+    })
+  }
   return resp.json();
-
+}
+catch(error){
+  console.log(error);
+}
+return [];
   
 }
 
