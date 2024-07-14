@@ -18,7 +18,7 @@ import DeleteImageButton from "./DeleteVideoButton";
 // You can use a Zod schema here if you want.
 export type Video = {
   id: string;
-  image_name: string;
+  video_name: string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -52,7 +52,7 @@ export const columns: ColumnDef<Video>[] = [
     header: "Id",
   },
   {
-    accessorKey: "image_name",
+    accessorKey: "video_name",
     header: ({ column }) => {
       return (
         <Button

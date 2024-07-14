@@ -3,6 +3,7 @@ import { Image, columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import NewImageButton from "./_components/NewImageButton";
 
 async function getData(): Promise<Image[]> {
   // Fetch data from your API here.
@@ -35,7 +36,8 @@ export default async function ImagePage() {
       <DefaultLayout>
         <main className="mx-auto w-full">
           <Breadcrumb pageName="Images" />
-          <div className="container mx-auto py-10">
+          <div className="container mx-auto py-2">
+            <NewImageButton/>
             <DataTable columns={columns} data={data} />
           </div>
         </main>
