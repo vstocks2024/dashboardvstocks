@@ -1,8 +1,6 @@
 "use client";
 
-import { ColumnDef,
-  getPaginationRowModel,
- } from "@tanstack/react-table";
+import { ColumnDef, getPaginationRowModel } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -16,25 +14,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import DeleteButton from "./DeleteButton";
+import EditAnimationButton from "./EditAnimationButton";
+import DeleteAnimationButton from "./DeleteAnimationButton";
 
-
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Vectors = {
+export type Animation = {
   id: string;
-  name: string;
-  description: string;
-  likes: number;
-  shares: number;
-  format: string;
+  template_data: JSON;
   createdAt: Date;
   updatedAt: Date;
 };
 
-export const columns: ColumnDef<Vectors>[] = [
+export const columns: ColumnDef<Animation>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -59,37 +49,7 @@ export const columns: ColumnDef<Vectors>[] = [
   },
   {
     accessorKey: "id",
-    header: "Vector Id",
-  },
-  {
-    accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "description",
-    header: "Description",
-  },
-  {
-    accessorKey: "likes",
-    header: "Likes",
-  },
-  {
-    accessorKey: "shares",
-    header: "Shared",
-  },
-  {
-    accessorKey: "format",
-    header: "Format",
+    header: "Template Id",
   },
   {
     accessorKey: "createdAt",
@@ -99,10 +59,11 @@ export const columns: ColumnDef<Vectors>[] = [
     accessorKey: "updatedAt",
     header: "Updated",
   },
+
   {
     id: "actions",
     cell: ({ row }) => {
-      const vector = row.original;
+      const animation = row.original;
 
       return (
         <DropdownMenu>
@@ -115,24 +76,20 @@ export const columns: ColumnDef<Vectors>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel></DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(vector.id)}
+              onClick={() => navigator.clipboard.writeText(animation.id)}
             >
               Copy Vector ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link
-                href={{
-                  pathname: "/vectors/edit",
-                  query: { vector: `${vector.id}` },
-                  
-                }}
-              >
-                Edit
-              </Link>
+              <EditAnimationButton animation_id={animation.id}/>
             </DropdownMenuItem>
-            <DropdownMenuItem><Link href={"/vectors"}>Download</Link></DropdownMenuItem>
-            <DropdownMenuItem ><DeleteButton vector_id={vector.id}/></DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/vectors"}>Download</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <DeleteAnimationButton animation_id={animation.id} />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
