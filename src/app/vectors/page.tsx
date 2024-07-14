@@ -8,17 +8,18 @@ import NewVectorButton from "./_components/NewVectorButton";
 
 async function getVectorsData(): Promise<Vectors[]> {
   // Fetch data from your API here.
-  try{
+  
 const resp = await fetch(`${process.env.NEXT_PUBLIC_URL}/vectors/listall`,{
   method:"GET",
   cache:"no-store"
 });
-  if (resp.status === 200 && resp.statusText === "OK") return resp.json();
-  return [];}
-  catch(error){
-    console.log(error);
-    throw new Error("Exception raised during table fetch");
-  }
+if (!resp.ok) {
+  // This will activate the closest `error.js` Error Boundary
+  throw new Error('Failed to fetch data')
+}
+return resp.json();
+
+
 }
 
 export default async function VectorPage() {

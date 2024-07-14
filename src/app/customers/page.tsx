@@ -5,25 +5,14 @@ import { DataTable } from "./_components/data-table";
 import { toast } from "@/components/ui/use-toast";
 
 async function getData(): Promise<Customers[]> {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/customers/listall`,
-      {
-        method: "GET",
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      toast({
-        title: "Failed to fetch customer details",
-        description: res.statusText,
-      });
-    }
-    return res.json();
-  } catch (error) {
-    console.log(error);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/customers/listall`, {
+    method: "GET",
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
   }
-  return [];
+  return res.json();
 }
 
 export default async function CustomersPage() {

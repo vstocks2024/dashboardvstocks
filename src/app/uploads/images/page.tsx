@@ -7,25 +7,16 @@ import NewImageButton from "./_components/NewImageButton";
 
 async function getData(): Promise<Image[]> {
   // Fetch data from your API here.
-  try {
+  
     const resp = await fetch(`${process.env.NEXT_PUBLIC_URL}/images/listall`, {
       method: "GET",
       cache: "no-store",
     });
     if (!resp.ok) {
-      toast({
-        title: "Failed",
-        description: "Failed to fetch the images"
-          .concat(" ")
-          .concat(resp.statusText),
-      });
+      throw new Error("Failed to fetch data");
     }
     return resp.json();
-  } catch (error) {
-    console.log(error);
   }
-  return [];
-}
 
 export default async function ImagePage() {
   const data = await getData();
