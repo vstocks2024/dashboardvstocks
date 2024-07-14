@@ -52,7 +52,7 @@ export const columns: ColumnDef<Customers>[] = [
  
   {
     accessorKey: "id",
-    header: "Id",
+    header: "Customer Id",
   },
   {
     accessorKey: "username",

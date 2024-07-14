@@ -49,7 +49,7 @@ export const columns: ColumnDef<Image>[] = [
 
   {
     accessorKey: "id",
-    header: "Id",
+    header: "Image Id",
   },
   {
     accessorKey: "image_name",

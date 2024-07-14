@@ -49,7 +49,7 @@ export const columns: ColumnDef<Video>[] = [
 
   {
     accessorKey: "id",
-    header: "Id",
+    header: "Video Id",
   },
   {
     accessorKey: "video_name",

@@ -1,9 +1,12 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ColumnDef,
+  getPaginationRowModel,
+ } from "@tanstack/react-table";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,24 +15,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-import axios from "axios";
-import { toast } from "@/components/ui/use-toast";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import DeleteButton from "./DeleteButton";
+
+
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Tag = {
+export type Vectors = {
   id: string;
   name: string;
   description: string;
+  likes: number;
+  shares: number;
+  format: string;
   createdAt: Date;
   updatedAt: Date;
 };
 
-
-export const columns: ColumnDef<Tag>[] = [
+export const columns: ColumnDef<Vectors>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -54,7 +59,7 @@ export const columns: ColumnDef<Tag>[] = [
   },
   {
     accessorKey: "id",
-    header: "Tag Id",
+    header: "ID",
   },
   {
     accessorKey: "name",
@@ -75,6 +80,18 @@ export const columns: ColumnDef<Tag>[] = [
     header: "Description",
   },
   {
+    accessorKey: "likes",
+    header: "Likes",
+  },
+  {
+    accessorKey: "shares",
+    header: "Shared",
+  },
+  {
+    accessorKey: "format",
+    header: "Format",
+  },
+  {
     accessorKey: "createdAt",
     header: "Created",
   },
@@ -85,7 +102,7 @@ export const columns: ColumnDef<Tag>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const tag = row.original;
+      const vector = row.original;
 
       return (
         <DropdownMenu>
@@ -96,22 +113,26 @@ export const columns: ColumnDef<Tag>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel></DropdownMenuLabel>
             <DropdownMenuItem
-              className="cursor-pointer"
-              onClick={() => navigator.clipboard.writeText(tag.id)}
+              onClick={() => navigator.clipboard.writeText(vector.id)}
             >
-              Copy Tag Id
+              Copy Vector ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer" >
-              <Link href={`/tags/edit?tag=${tag.id}`}>Edit</Link>
+            <DropdownMenuItem>
+              <Link
+                href={{
+                  pathname: "/vectors/edit",
+                  query: { vector: `${vector.id}` },
+                  
+                }}
+              >
+                Edit
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem
-              className="cursor-pointer"
-            >
-    <DeleteButton tag_id={tag.id}/>
-            </DropdownMenuItem>
+            <DropdownMenuItem><Link href={"/vectors"}>Download</Link></DropdownMenuItem>
+            <DropdownMenuItem ><DeleteButton vector_id={vector.id}/></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
