@@ -33,7 +33,7 @@ export default async function ImagePage() {
   return (
     <>
       <DefaultLayout>
-        <main className="mx-auto w-full max-w-[1150px]">
+        <main className="mx-auto w-full">
           <Breadcrumb pageName="Images" />
           <div className="container mx-auto py-10">
             <DataTable columns={columns} data={data} />

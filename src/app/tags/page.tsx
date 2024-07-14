@@ -32,7 +32,7 @@ return [];
 export default async function TagsPage(){
   const data = await getData()
     return <><DefaultLayout>
-            <main className="mx-auto w-full max-w-[1150px]">
+            <main className="mx-auto w-full">
           <Breadcrumb pageName="Tags" />
           <div className="container mx-auto py-2">
         <NewTagButton />

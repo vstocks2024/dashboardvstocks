@@ -72,11 +72,11 @@ const [loading, setLoading] = useState(false);
       });
     }
   }
-  function onReset() {}
+  
   return (
     <>
       <DefaultLayout>
-        <main className="mx-auto w-full max-w-[1080px]">
+        <main className="mx-auto w-full">
           <Breadcrumb pageName="New Tag" />
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

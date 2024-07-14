@@ -38,6 +38,8 @@ export default function NewImagePage() {
     defaultValues: {},
   });
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    form.resetField("imagefile");
+    
     console.log(data);
     setLoading(true);
     const resp = await axios.post(
@@ -49,8 +51,8 @@ export default function NewImagePage() {
     );
     console.log(resp);
     if (resp.status === 201 && resp.statusText === "Created") {
+      
       setLoading(false);
-      form.reset();
       console.log(resp);
       router.refresh();
       toast({
@@ -72,7 +74,7 @@ export default function NewImagePage() {
   return (
     <>
       <DefaultLayout>
-        <main className="mx-auto w-full max-w-[1080px]">
+        <main className="mx-auto w-full">
           <Breadcrumb pageName="New Image" />
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
