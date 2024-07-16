@@ -367,8 +367,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       >
  
         {/* <!-- SIDEBAR HEADER --> */}
-        <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-0 xl:py-0">
-        <Link href="/">
+        <div className="flex flex-row w-full items-center justify-center  px-6 py-5.5 lg:py-0 xl:py-0">
+        <Link  href="/">
             <Image
               width={90}
               height={90}
