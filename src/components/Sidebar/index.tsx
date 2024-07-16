@@ -365,28 +365,29 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             : "-translate-x-full"
         }`}
       >
+ 
         {/* <!-- SIDEBAR HEADER --> */}
-        <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 xl:py-10">
-          {/* <Link href="/">
+        <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-0 xl:py-0">
+        <Link href="/">
             <Image
-              width={176}
-              height={32}
-              src={"/images/logo/logo-dark.svg"}
-              alt="Logo"
-              priority
-              className="dark:hidden"
-              style={{ width: "auto", height: "auto" }}
-            />
-            <Image
-              width={176}
-              height={32}
+              width={90}
+              height={90}
               src={"/images/logo/logo.svg"}
               alt="Logo"
               priority
-              className="hidden dark:block"
-              style={{ width: "auto", height: "auto" }}
+              className="dark:hidden"
+              // style={{ width: "auto", height: "auto" }}
             />
-          </Link> */}
+            <Image
+              width={90}
+              height={90}
+              src={"/images/logo/logo-dark.svg"}
+              alt="Logo"
+              priority
+              className="hidden dark:block"
+              // style={{ width: "auto", height: "auto" }}
+            />
+          </Link>
 
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
