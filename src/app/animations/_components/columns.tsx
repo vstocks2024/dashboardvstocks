@@ -13,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 import EditAnimationButton from "./EditAnimationButton";
 import DeleteAnimationButton from "./DeleteAnimationButton";
 

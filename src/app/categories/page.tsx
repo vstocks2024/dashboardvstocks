@@ -23,7 +23,7 @@ export default async function CategoryPage() {
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Categories" />
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-2">
         <NewCategoryButton/>
         <DataTable columns={columns} data={data} />
       </div>

@@ -56,7 +56,7 @@ export const columns: ColumnDef<Category>[] = [
   },
   {
     accessorKey: "id",
-    header: "Customer Id",
+    header: "Category Id",
   },
   {
     accessorKey: "name",
@@ -64,7 +64,7 @@ export const columns: ColumnDef<Category>[] = [
       return (
         <Button
           variant="ghost"
-          className="flex flex-row items-center justify-start"
+          className="flex flex-row items-center justify-start bg-transparent hover:bg-transparent"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name

@@ -64,6 +64,7 @@ export const columns: ColumnDef<Customers>[] = [
       return (
         <Button
           variant="ghost"
+          className="flex flex-row items-center justify-start bg-transparent hover:bg-transparent"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name
