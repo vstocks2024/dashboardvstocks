@@ -131,7 +131,9 @@ export const columns: ColumnDef<Vectors>[] = [
                 Edit
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem><Link href={"/vectors"}>Download</Link></DropdownMenuItem>
+            <DropdownMenuItem>
+            <Button variant={"default"} className="w-full bg-green-500 text-white hover:bg-green-400" >Download</Button>
+              </DropdownMenuItem>
             <DropdownMenuItem ><DeleteButton vector_id={vector.id}/></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

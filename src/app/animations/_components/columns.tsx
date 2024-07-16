@@ -85,7 +85,7 @@ export const columns: ColumnDef<Animation>[] = [
               <EditAnimationButton animation_id={animation.id}/>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link href={"/vectors"}>Download</Link>
+            <Button variant={"default"} className="w-full bg-green-500 text-white hover:bg-green-400" >Download</Button>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <DeleteAnimationButton animation_id={animation.id} />
