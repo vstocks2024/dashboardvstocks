@@ -130,7 +130,7 @@ export default function NewVectorsPage2() {
     console.log(data);
     setLoading(true);
     const resp = await axios.post(
-      `${process.env.NEXT_PUBLIC_URL}/vectors/new2`,
+      `${process.env.NEXT_PUBLIC_URL}/vectors/new3`,
       data,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -163,7 +163,6 @@ export default function NewVectorsPage2() {
     form.resetField("category_id");
     form.resetField("tag_id");
     form.resetField("vectorfile");
-   
   }
 
   const [category, setCategory] = useState<z.infer<typeof CategorySchema>[]>(
@@ -187,7 +186,7 @@ export default function NewVectorsPage2() {
       category.map((item) => {
         setCategoryOption((prev) => [
           ...prev,
-          { label: item.name, value: item.id, disable: false },
+          { label: item.name, value: item.id},
         ]);
       });
     })();
@@ -198,7 +197,7 @@ export default function NewVectorsPage2() {
       tag.map((item) => {
         setTagOption((prev) => [
           ...prev,
-          { label: item.name, value: item.id, disable: false },
+          { label: item.name, value: item.id},
         ]);
       });
     })();
