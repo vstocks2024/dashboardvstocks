@@ -30,6 +30,10 @@ export type Vectors = {
   likes: number;
   shares: number;
   format: string;
+  width:number;
+  height:number;
+  license:string;
+  orientation:string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -91,6 +95,22 @@ export const columns: ColumnDef<Vectors>[] = [
   {
     accessorKey: "format",
     header: "Format",
+  },
+  {
+    accessorKey: "width",
+    header: "Width",
+  },
+  {
+    accessorKey: "height",
+    header: "Height",
+  },
+  {
+    accessorKey: "license",
+    header: "License",
+  },
+  {
+    accessorKey: "orientation",
+    header: "Orientation",
   },
   {
     accessorKey: "createdAt",
