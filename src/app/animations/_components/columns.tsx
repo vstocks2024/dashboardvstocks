@@ -16,14 +16,22 @@ import {
 import EditAnimationButton from "./EditAnimationButton";
 import DeleteAnimationButton from "./DeleteAnimationButton";
 
-export type Animation = {
-  id: string;
-  template_data: JSON;
+export type Animation_Url = {
+  animation_id: string;
+  name: string;
+  description: string;
+  animation_data: JSON[];
+  likes: number;
+  shares: number;
+  format: string;
+  license: string;
+  orientation: string;
+  thumbnail_url: string;
   createdAt: Date;
   updatedAt: Date;
 };
 
-export const columns: ColumnDef<Animation>[] = [
+export const columns: ColumnDef<Animation_Url>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -47,8 +55,36 @@ export const columns: ColumnDef<Animation>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
-    header: "Template Id",
+    accessorKey: "animation_id",
+    header: "Animation Id",
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "description",
+    header: "Description",
+  },
+  {
+    accessorKey: "likes",
+    header: "Likes",
+  },
+  {
+    accessorKey: "shares",
+    header: "Shares",
+  },
+  {
+    accessorKey: "format",
+    header: "Format",
+  },
+  {
+    accessorKey: "license",
+    header: "License",
+  },
+  {
+    accessorKey: "orientation",
+    header: "Orientation",
   },
   {
     accessorKey: "createdAt",
@@ -62,7 +98,7 @@ export const columns: ColumnDef<Animation>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const animation = row.original;
+      const animation_url = row.original;
 
       return (
         <DropdownMenu>
@@ -75,19 +111,27 @@ export const columns: ColumnDef<Animation>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel></DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(animation.id)}
+              onClick={() => navigator.clipboard.writeText(animation_url.animation_id)}
             >
               Copy Vector ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <EditAnimationButton animation_id={animation.id}/>
+              <EditAnimationButton animation_id={animation_url.animation_id} />
             </DropdownMenuItem>
             <DropdownMenuItem>
-            <Button variant={"default"} className="w-full bg-green-500 text-white hover:bg-green-400" >Download</Button>
+              <Button
+              asChild
+                variant={"default"}
+                className="w-full bg-green-500 text-white hover:bg-green-400"
+              >
+                <a href={`${animation_url.thumbnail_url}`} download="newthumbnail">
+                Download
+                </a>
+              </Button>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <DeleteAnimationButton animation_id={animation.id} />
+              <DeleteAnimationButton animation_id={animation_url.animation_id} />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

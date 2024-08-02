@@ -7,7 +7,7 @@ export default function NewAnimationButton() {
     const router = useRouter();
   return (
     <div className='flex flex-row items-center justify-end my-2'>
-      <Button  onClick={()=>router.push(`http://admin.editor.vstock.in/editor`)} className='text-white bg-sky-600 hover:bg-sky-500' variant={'default'}>+ New Animation</Button>
+      <Button asChild className='text-white bg-sky-600 hover:bg-sky-500' variant={'default'}><a target='_blank' href='http://admin.editor.vstock.in'>+ New Animation</a></Button>
     </div>
   )
 }

@@ -1,14 +1,14 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 
-import { Animation, columns } from "./_components/columns";
+import { Animation_Url, columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 import NewAnimationButton from "./_components/NewAnimationButton";
 
-async function getData(): Promise<Animation[]> {
+async function getData(): Promise<Animation_Url[]> {
   // Fetch data from your API here.
 
-  const resp = await fetch(`${process.env.NEXT_PUBLIC_URL}/animations/listall`, {
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_URL}/animations_url/listall`, {
     method: "GET",
     cache: "no-store",
   });
